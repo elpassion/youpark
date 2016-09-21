@@ -1,4 +1,5 @@
-require 'apartment/elevators/subdomain'
+require 'apartment/elevators/generic'
+require 'apartment/you_park_tenant_middleware'
 
 Apartment.configure do |config|
   config.excluded_models = %w{ Customer }
@@ -7,4 +8,10 @@ Apartment.configure do |config|
   config.use_sql = false
 end
 
-Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
+Rails.application.config.middleware.use 'YouParkTenantMiddleware', lambda { |request|
+  if request.path.starts_with?('/c')
+    request.path.gsub(/^\/c\//, '').split('/').try(:first)
+  else
+    nil
+  end
+}
