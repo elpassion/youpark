@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20160922100756) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "owners", "parking_spaces"
   add_foreign_key "owners", "users"
+  add_foreign_key "reservation_rules", "owners"
   add_foreign_key "reservations", "parking_spaces"
   add_foreign_key "reservations", "reservation_rules"
   add_foreign_key "reservations", "users"
-  add_foreign_key "reservation_rules", "owners"
 end
