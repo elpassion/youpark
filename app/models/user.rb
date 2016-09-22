@@ -5,4 +5,7 @@ class User < ApplicationRecord
           :confirmable, :omniauthable
 
   validates :name, presence: true
+
+  has_many :owners
+  has_many :parking_spaces, through: :owners
 end

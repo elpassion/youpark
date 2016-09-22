@@ -61,6 +61,21 @@ ActiveRecord::Schema.define(version: 20160922095020) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "owners", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "parking_space_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["parking_space_id"], name: "index_owners_on_parking_space_id", using: :btree
+    t.index ["user_id"], name: "index_owners_on_user_id", using: :btree
+  end
+
+  create_table "parking_spaces", force: :cascade do |t|
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reservation_rules", force: :cascade do |t|
     t.integer  "owner_id",   null: false
     t.json     "rules"
@@ -93,4 +108,6 @@ ActiveRecord::Schema.define(version: 20160922095020) do
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "owners", "parking_spaces"
+  add_foreign_key "owners", "users"
 end
