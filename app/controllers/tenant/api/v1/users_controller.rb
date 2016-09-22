@@ -4,8 +4,8 @@ module Tenant
       class UsersController < ApiController
         before_action :doorkeeper_authorize!
 
-        def index
-          render json: User.pluck(:email), root: false
+        def show
+          render json: current_user, root: false
         end
       end
     end
