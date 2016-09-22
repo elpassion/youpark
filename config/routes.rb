@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :customers, only: [:new, :create]
+  resources :customers, only: :index
 
   scope path: '/c/:tenant/' do
     use_doorkeeper do
