@@ -6,4 +6,5 @@ class Reservation < ApplicationRecord
   scope :since, -> (date) { where('reservation_date >= ?', date) }
   scope :free,  -> { where(user_id: nil) }
   scope :on_date, -> (date) { where(reservation_date: date) }
+  scope :for_user, -> (user) { where(user: user) }
 end

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
         namespace :v1 do
           resource :user, only: :show
           resource :calendar, only: :show
-          resources :reservations, only: [:index, :create]
+          resources :reservations, only: [:index, :create] do
+            collection do
+              delete '/', to: 'reservations#destroy'
+            end
+          end
         end
       end
 

@@ -19,6 +19,11 @@ module Tenant
             render json: {}, status: 409
           end
         end
+
+        def destroy
+          CancelReservationService.new.execute(current_user, params[:reservation_date])
+          render json: {}
+        end
       end
     end
   end
