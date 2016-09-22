@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   resources :customers, only: [:new, :create]
 
   scope path: '/c/:tenant/' do
-    use_doorkeeper
+    use_doorkeeper do
+      skip_controllers :applications, :authorized_applications
+    end
+    
     devise_for :users, skip: :omniauth_callbacks
 
     scope '/', module: :tenant do
