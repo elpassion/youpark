@@ -1,13 +1,7 @@
 class TenantController < ApplicationController
-  before_action :verify_customer!
+  include CustomerConcern
 
-  protected
-  def current_customer
-    @current_customer ||= Customer.find_by(database: Apartment::Tenant.current)
-  end
-
-  private
-  def verify_customer!
-    redirect_to root_path unless current_customer
+  def default_url_options(options = {})
+    options.merge({ tenant: Apartment::Tenant.current_tenant })
   end
 end

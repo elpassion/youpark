@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'apartment'
 gem 'devise'
+gem 'doorkeeper'
+gem 'omniauth'
 
 group :development, :test do
   gem 'byebug', platform: :mri
