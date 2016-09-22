@@ -9,7 +9,7 @@ Apartment.configure do |config|
 end
 
 Rails.application.config.middleware.use 'YouParkTenantMiddleware', lambda { |request|
-  if request.path.starts_with?('/c')
+  if request.path.starts_with?('/c/')
     request.path.gsub(/^\/c\//, '').split('/').try(:first)
   else
     nil
