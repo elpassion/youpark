@@ -1,7 +1,7 @@
 class CustomerSerializer < ActiveModel::Serializer
-  attributes :id, :name, :host
+  attributes :id, :name, :slug
 
-  def host
-    "#{ENV['APPLICATION_URL']}/c/#{object.database}"
+  def slug
+    object.database
   end
 end
