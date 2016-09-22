@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922095020) do
+ActiveRecord::Schema.define(version: 20160922100756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,4 +110,5 @@ ActiveRecord::Schema.define(version: 20160922095020) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "owners", "parking_spaces"
   add_foreign_key "owners", "users"
+  add_foreign_key "reservation_rules", "owners"
 end
