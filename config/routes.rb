@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         namespace :v1 do
           resource :user, only: :show
           resource :calendar, only: :show
-          resources :reservations, only: :index
+          resources :reservations, only: [:index, :create]
         end
       end
 
