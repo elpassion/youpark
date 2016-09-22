@@ -10,6 +10,6 @@ class ParkingSpaceStatusSerializer < ActiveModel::Serializer
   end
 
   def taken
-    object.reservations.length > 0
+    object.reservations.first.try(:user_id).present?
   end
 end
