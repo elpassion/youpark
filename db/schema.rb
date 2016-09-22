@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922095020) do
+ActiveRecord::Schema.define(version: 20160922100217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,19 @@ ActiveRecord::Schema.define(version: 20160922095020) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "parking_space_id"
+    t.integer  "user_id"
+    t.integer  "reservation_rule_id"
+    t.date     "reservation_date"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["parking_space_id", "reservation_date"], name: "index_reservations_on_parking_space_id_and_reservation_date", unique: true, using: :btree
+    t.index ["parking_space_id"], name: "index_reservations_on_parking_space_id", using: :btree
+    t.index ["reservation_rule_id"], name: "index_reservations_on_reservation_rule_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -110,4 +123,7 @@ ActiveRecord::Schema.define(version: 20160922095020) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "owners", "parking_spaces"
   add_foreign_key "owners", "users"
+  add_foreign_key "reservations", "parking_spaces"
+  add_foreign_key "reservations", "reservation_rules"
+  add_foreign_key "reservations", "users"
 end
