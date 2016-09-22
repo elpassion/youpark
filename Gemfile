@@ -19,10 +19,20 @@ gem 'doorkeeper'
 gem 'omniauth'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'virtus'
+gem 'activerecord-import'
+
+group :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'json-schema'
+  gem 'timecop'
+end
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'
+  gem 'factory_girl'
 end
 
 group :development do

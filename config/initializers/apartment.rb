@@ -8,7 +8,7 @@ Apartment.configure do |config|
   config.use_sql = false
 end
 
-Rails.application.config.middleware.use 'YouParkTenantMiddleware', lambda { |request|
+Rails.application.config.middleware.use YouParkTenantMiddleware, lambda { |request|
   if request.path.starts_with?('/c/')
     request.path.gsub(/^\/c\//, '').split('/').try(:first)
   else
