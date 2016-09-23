@@ -22,6 +22,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'virtus'
 gem 'activerecord-import'
 gem 'sidekiq'
+gem 'clavius'
 
 group :test do
   gem 'rspec-rails', '~> 3.5'

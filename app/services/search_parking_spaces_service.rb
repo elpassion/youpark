@@ -1,8 +1,5 @@
 class SearchParkingSpacesService
-  def execute(date)
-    ParkingSpace.includes(reservations: :user)
-                .where(reservations: { reservation_date: date })
-                .references(:reservations)
-                .order('number asc')
+  def without_reservation_on(date)
+    ParkingSpace.where.not(id: Reservation.on_date(date).pluck(:parking_space_id)).includes(:owners)
   end
 end

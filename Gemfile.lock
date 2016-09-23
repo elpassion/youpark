@@ -57,6 +57,7 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.5)
+    clavius (1.0.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.1)
@@ -259,6 +260,7 @@ DEPENDENCIES
   activerecord-import
   apartment
   byebug
+  clavius
   coffee-rails (~> 4.2)
   devise
   doorkeeper
