@@ -5,7 +5,7 @@ module Tenant
         before_action :doorkeeper_authorize!
 
         def create
-          reservation = CreateReservationService.new.execute(current_user, params[:reservation_date])
+          reservation = CreateReservationService.new.execute(current_user, params[:reservation_date], params[:parking_space_id])
           if reservation.present?
             render json: reservation
           else
