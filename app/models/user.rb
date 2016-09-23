@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :owners
   has_many :parking_spaces, through: :owners
   has_many :devices
+  has_many :reservations
 end
