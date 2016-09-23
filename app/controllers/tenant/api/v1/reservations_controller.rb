@@ -7,7 +7,7 @@ module Tenant
         def index
           params[:reservation_date] ||= Date.today
 
-          parking_spaces = ParkingSpacesSearchService.with_state_on_date(params[:reservation_date])
+          parking_spaces = SearchParkingSpacesService.new.execute(params[:reservation_date])
           render json: parking_spaces, each_serializer: ParkingSpaceStatusSerializer, root: false
         end
 

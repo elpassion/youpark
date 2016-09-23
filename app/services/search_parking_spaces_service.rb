@@ -1,5 +1,5 @@
-class ParkingSpacesSearchService
-  def self.with_state_on_date(date)
+class SearchParkingSpacesService
+  def execute(date)
     ParkingSpace.includes(reservations: :user)
                 .where(reservations: { reservation_date: date })
                 .references(:reservations)
