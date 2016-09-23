@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     scope '/', module: :tenant do
       namespace :api do
         namespace :v1 do
-          resource :user, only: :show
+          resource :user, only: :show do
+            member do
+              get :parking_space
+            end
+          end
           resource :calendar, only: :show
           resources :reservations, only: [:create] do
             collection do
