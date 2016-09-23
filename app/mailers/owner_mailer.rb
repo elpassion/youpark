@@ -6,6 +6,6 @@ class OwnerMailer < ApplicationMailer
     @user = owner.user
     @parking_space = owner.parking_space
 
-    mail(to: @user.email, subject: '[YouPark] Make reservation for your parking space!')
+    mail(to: @user.email, subject: '[ElParking] Stwórz swoją rezerwację!')
   end
 end
