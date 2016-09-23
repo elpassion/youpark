@@ -8,7 +8,7 @@ class ConfirmReservationJob < ApplicationJob
       date = Date.tomorrow
       if Clavius.active?(date)
         Reservation.on_date(date).each do |reservation|
-          ReservationMailer.confirm(reservation.user,).deliver_now
+          ReservationMailer.confirm(reservation.user_id,tenant).deliver_later
         end
       end
     end
