@@ -21,6 +21,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'virtus'
 gem 'activerecord-import'
+gem 'sidekiq'
 
 group :test do
   gem 'rspec-rails', '~> 3.5'
