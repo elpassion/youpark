@@ -23,6 +23,7 @@ gem 'virtus'
 gem 'activerecord-import'
 gem 'sidekiq'
 gem 'clavius'
+gem 'clockwork'
 
 group :test do
   gem 'rspec-rails', '~> 3.5'

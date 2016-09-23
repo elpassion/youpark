@@ -58,6 +58,9 @@ GEM
     builder (3.2.2)
     byebug (9.0.5)
     clavius (1.0.2)
+    clockwork (2.0.0)
+      activesupport
+      tzinfo
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.1)
@@ -261,6 +264,7 @@ DEPENDENCIES
   apartment
   byebug
   clavius
+  clockwork
   coffee-rails (~> 4.2)
   devise
   doorkeeper
