@@ -18,6 +18,7 @@ Rails.application.routes.draw do
               delete '/', to: 'reservations#destroy'
             end
           end
+          resources :devices, only: [:create]
         end
       end
 
