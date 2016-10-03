@@ -6,7 +6,9 @@ module Tenant
 
         def create
           provider = Device.providers[params[:provider]]
-          device = Device.new(user: current_user, token: params[:device_token], provider: provider)
+
+          device = Device.where(token: params[:device_token], provider: provider).first_or_initialize
+          device.user = current_user
           device.save!
 
           render json: device
